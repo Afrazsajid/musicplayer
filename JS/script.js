@@ -56,6 +56,7 @@ function setupAudioControls() {
 
     forward.addEventListener("click", function () {
         console.log(0)
+        if (songindex <songlst.length) 
         
      
             songindex+=1
@@ -68,9 +69,11 @@ function setupAudioControls() {
 
     backward.addEventListener("click", function () {
         if (songindex !== 0) {
-            songindex--;
-            song_name = songslst[songindex];
-            newsongloader(playName, song_name);
+            songindex-=1
+            src=`songs/${playlist}/${songlst[songindex]}/${songlst[songindex]}`
+            console.log(src,songindex)
+            loadsong(src)
+     
         }
     });
 }
