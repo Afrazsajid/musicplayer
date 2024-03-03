@@ -56,7 +56,7 @@ function setupAudioControls() {
 
     forward.addEventListener("click", function () {
         console.log(0)
-        if (songindex <songlst.length) 
+        if (songindex <songlst.length-1) 
         
      
             songindex+=1
