@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  /* fonts */
+  --font-spline-sans: "Spline Sans";
+
+  /* font sizes */
+  --font-size-xs: 0.75rem;
+
+  /* Colors */
+  --color-fuchsia-100: #d926ff;
+  --color-white: #fff;
+  --color-thistle: #b599bd;
+
+  /* Gaps */
+  --gap-xl: 20px;
+
+  /* Paddings */
+  --padding-5xs: 0.5rem;
+  --padding-12xs: 0.063rem;
+
+  /* Border radiuses */
+  --br-lgi: 19px;
+  --br-13xl: 32px;
+
+  --navwidth:280px;
+}

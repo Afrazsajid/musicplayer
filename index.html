@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1, width=device-width" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spline Sans:wght@400;500;700&display=swap" />
+
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="CSS/global.css" />
+  <link rel="stylesheet" href="CSS/index.css" />
+
+</head>
+
+<body>
+  <script src="JS/script.js"></script>
+  <main>
+
+
+
+    <button id="menu-open"><i class="ri-menu-line"></i></button>
+
+    <nav id="navbar">
+      
+      <div class="menu-closed"></div>
+
+      <div class="menu-opened " id="menu-to-open-close">
+
+
+
+
+
+        <div class="heading-2">
+          <h3 id="heading">Playlist</h3>
+          <button id="closebtn"><i class="ri-close-large-line ham-ico"></i></button>
+        </div>
+
+
+        
+      </div>
+
+    </nav>
+
+
+
+
+
+
+
+    <div class="main-frame">
+
+
+
+      <section class="first-frame">
+        <div class="second-frame">
+          <div class="song-image">
+            <img class="song-img-icon" id="song_img" loading="lazy" alt="" src="songs/Animal/Abrar's Entry/Abrar's Entry.jpg" />
+          </div>
+          <div class="forward-button">
+            <div class="third-frame">
+              <div class="familiar-taste-label">
+                <h1 class="familiar-taste" id="song-name"></h1>
+                <div class="section-background">
+                  <p id="artist-name"></p>
+                </div>
+              </div>
+            </div>
+            <div class="group-container">
+              <div class="gvv-label">
+
+                <div class="rectangle-container-parent">
+                  <div class="rectangle-container">
+                    <input type="range" id="progressbar" value="0">
+
+                    <div class="gvv-frame">
+                      <div class="group-with-rects">
+                        <div class="semicolon-marker" id="current_time">1:17</div>
+                        <div class="gvv" id="duration"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <!-- <div class="frame-quartet">
+            <div class="playlist-label">
+              <button class="addtoplaylist">
+                <div class="addtoplaylist-child"></div>
+                <b class="add-to-playlist">Add to playlist</b>
+              </button>
+            </div>
+            <div class="heartbutton-frame">
+              <img class="download-icon1" loading="lazy" alt="" src="./public/download@2x.png" />
+
+              <img class="heart-baton-icon" alt="" src="./public/heartbaton.svg" />
+            </div> -->
+            <div class="controls-cont">
+              <button class="controlo-btn" id="backward"><i class="ri-skip-back-fill"></i></i></button>
+              <button class="controlo-btn" id="back5btn"><i class="ri-replay-5-line"></i></button>
+
+              <button class="playbtn" id="playBtn"><i class="ri-play-circle-fill" id="playbtnico"></i></button>
+
+              <button class="controlo-btn" id="for5btn"><i class="ri-forward-5-line"></i></button>
+              <button class="controlo-btn" id="forward"><i class="ri-skip-forward-fill"></i></button>
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+    </div>
+    </section>
+    </div>
+  </main>
+ 
+</body>
+
+</html>
