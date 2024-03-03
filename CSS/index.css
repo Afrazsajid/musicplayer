@@ -567,6 +567,9 @@
 #forward:active i{
   color: #f26cfb;
 }
+#backward:active i{
+  color: #f26cfb;
+}
 
 
 

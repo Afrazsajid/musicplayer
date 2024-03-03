@@ -63,6 +63,7 @@ function setupAudioControls() {
             src=`songs/${playlist}/${songlst[songindex]}/${songlst[songindex]}`
             console.log(src,songindex)
             loadsong(src)
+            changenewinfo(songlst[songindex])
      
         
     });
@@ -73,7 +74,7 @@ function setupAudioControls() {
             src=`songs/${playlist}/${songlst[songindex]}/${songlst[songindex]}`
             console.log(src,songindex)
             loadsong(src)
-     
+            changenewinfo(songlst[songindex])
         }
     });
 }
