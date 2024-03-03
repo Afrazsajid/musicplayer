@@ -1,4 +1,5 @@
 <div style="background-color: black; color: white; padding: 20px;">
+https://resonant-gecko-e99e2e.netlify.app/
 
 # GroovyTunes: Your Music Spot 🎵
 
@@ -30,7 +31,7 @@ Now, let's talk about the future – I've got some cool stuff in mind:
 
 While I'm working on this project solo, I'd love to hear your thoughts. Got any ideas or feedback? Let me know! Let's make some noise and learn together!
 
-**P.S.** Exciting news – GroovyTunes is now LIVE! You can check it out [here](https://example.com). 🎉 
+**P.S.** Exciting news – GroovyTunes is now LIVE! You can check it out [here]([https://example.com](https://resonant-gecko-e99e2e.netlify.app/)). 🎉 
 
 Thanks for hanging out with GroovyTunes – where the music's as cool as the code! 🚀
 
