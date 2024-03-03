@@ -38,13 +38,13 @@ document.addEventListener('DOMContentLoaded', function () {
     //         link.addEventListener('click', chnageplaylist);
     //     });
     // }
-    function chnageplaylist(event) {
-        event.preventDefault();
-        console.log('Element clicked:', event.target);
-        let playName = event.target.querySelector(".playName").textContent.trim();
-        playlist=playName
-        loadplaylist(playlist,setupAudioControls)
-    }
+    // function chnageplaylist(event) {
+    //     event.preventDefault();
+    //     console.log('Element clicked:', event.target);
+    //     let playName = event.target.querySelector(".playName").textContent.trim();
+    //     playlist=playName
+    //     loadplaylist(playlist,setupAudioControls)
+    // }
        
     
         
