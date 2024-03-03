@@ -14,43 +14,56 @@ document.addEventListener('DOMContentLoaded', function () {
     const backward =  document.getElementById("backward")
     let songindex = 0
 
+    let src = "songs/Animal/Abrar's Entry/Abrar's Entry"
 
 
-    var songlst=[]
+
+    var songlst=["Abrar's Entry",'Arjan Vaily',"Papa Meri Jaan","Phele bhi mai"]
 
     
     
 
-    function playlistevent() {
-        let links = document.querySelectorAll(".song-cont")
-        links.forEach((link, index) => {
-            // Remove existing event listener if any
-            link.removeEventListener('click', chnageplaylist);
+    // function playlistevent() {
+    //     let links = document.querySelectorAll(".song-cont")
+    //     links.forEach((link, index) => {
+    //         // Remove existing event listener if any
+    //         link.removeEventListener('click',function(){
+    //             songindex+=1
+    //             src=`songs/${playName}/${songlst[songindex]}/${songlst[songindex]}`
+    //             console.log(src)
+    //             loadsong(src)
+    //         });
     
-            // Add event listener
-            link.addEventListener('click', chnageplaylist);
-        });
-    }
+    //         // Add event listener
+    //         link.addEventListener('click', chnageplaylist);
+    //     });
+    // }
     function chnageplaylist(event) {
         event.preventDefault();
         console.log('Element clicked:', event.target);
         let playName = event.target.querySelector(".playName").textContent.trim();
         playlist=playName
         loadplaylist(playlist,setupAudioControls)
+    }
        
     
         
     
 
 // Define the event listeners for forward and backward buttons
-function setupAudioControls(songslst, playName) {
+function setupAudioControls() {
+    
+
     forward.addEventListener("click", function () {
-        if (songindex < songslst.length - 1) {
-            songindex++;
-            song_name = songslst[songindex];
-            newsongloader(playName, song_name);
-            console.log(playName,song_name,songslst)
-        }
+        console.log(0)
+        
+     
+            songindex+=1
+            src=`songs/${playlist}/${songlst[songindex]}/${songlst[songindex]}`
+            console.log(src,songindex)
+            loadsong(src)
+     
+        
     });
 
     backward.addEventListener("click", function () {
@@ -62,47 +75,44 @@ function setupAudioControls(songslst, playName) {
     });
 }
 
-
-
         
 
-       
-        
-}
 
-function loadplaylist(playName,setupAudioControls) {
-    songindex = 0;
+// function loadplaylist(playName,setupAudioControls) {
+//     songindex = 0;
 
-    getSongs(`songs/${playName}`)
-        .then(songslst => {
+//     getSongs(`songs/${playName}`)
+//         .then(songslst => {
 
-            if (songslst.length > 0) {
-                songslst.shift();
-                console.log(playName,"load")
-                console.log(songslst, "get");
-                songlst = [...songslst];
-                songindex = 0;
-            }
+//             if (songslst.length > 0) {
+//                 songslst.shift();
+//                 console.log(playName,"load")
+//                 console.log(songslst, "get");
+//                 songlst = [...songslst];
+//                 songindex = 0;
+//             }
 
-            // Setup audio controls only if they are not already set up
-            if (!forward.onclick) {
-                setupAudioControls(songslst, playName);
-            }
+//             // Setup audio controls only if they are not already set up
+//             if (!forward.onclick) {
+//                 setupAudioControls(songslst, playName);
+//             }
 
-            // Load the first song
-            song_name = songslst[songindex];
-            newsongloader(playName, song_name);
-        })
-        .catch(error => {
-            console.error('Error loading playlist:', error);
-        });
-}
+//             // Load the first song
+//             song_name = songslst[songindex];
+//             newsongloader(playName, song_name);
+//         })
+//         .catch(error => {
+//             console.error('Error loading playlist:', error);
+//         });
+// }
+// }
 
 
-    function showplayico(){
+function showplayico(){
         playBtnIcon.classList.add("ri-play-circle-fill")
 
     }
+
     
     
 
@@ -249,14 +259,25 @@ function loadplaylist(playName,setupAudioControls) {
         
     }
 
+function loadsong(src){
+    console.log(src)
+    
+    initializeAudio(src+".mp3")
+    imageloader(src+".jpg")
+}
+loadsong(src)
+setupAudioControls()
 
-loadplaylist(playlist)
+
+// loadplaylist(playlist)
 // initializeAudio("songs/Animal/Shayad/Shayad.mp3")
 updateInfo()
 
     playBtn.addEventListener("click", 
         togglePlay);
     seccontols()
+
+    
 
 
 
@@ -281,7 +302,7 @@ updateInfo()
                 }
 
                 // Add click event listener to each link after updating the playlist
-                playlistevent()
+           
                 
                 
               
