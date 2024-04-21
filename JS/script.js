@@ -1,67 +1,47 @@
+async function main() {
+    
 
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async function () {
     let playlist="Animal"
     // Menu Control
     const closeButton = document.getElementById("closebtn");
     const openButton = document.getElementById("menu-open");
     let navbar = document.getElementById("navbar")
     const nav = document.getElementById("menu-to-open-close");
+    // console.log(nav)
     const song_img =  document.getElementById("song_img")
     const for5btn =  document.getElementById("for5btn")
     const back5btn =  document.getElementById("back5btn")
     const forward =  document.getElementById("forward")
     const backward =  document.getElementById("backward")
+    let songlst
     let songindex = 0
 
     let src = "songs/Animal/Abrar's Entry/Abrar's Entry"
+    
 
 
-
-    var songlst=["Abrar's Entry",'Arjan Vaily',"Papa Meri Jaan","Phele bhi mai"]
 
     
     
 
-    // function playlistevent() {
-    //     let links = document.querySelectorAll(".song-cont")
-    //     links.forEach((link, index) => {
-    //         // Remove existing event listener if any
-    //         link.removeEventListener('click',function(){
-    //             songindex+=1
-    //             src=`songs/${playName}/${songlst[songindex]}/${songlst[songindex]}`
-    //             console.log(src)
-    //             loadsong(src)
-    //         });
-    
-    //         // Add event listener
-    //         link.addEventListener('click', chnageplaylist);
-    //     });
-    // }
-    // function chnageplaylist(event) {
-    //     event.preventDefault();
-    //     console.log('Element clicked:', event.target);
-    //     let playName = event.target.querySelector(".playName").textContent.trim();
-    //     playlist=playName
-    //     loadplaylist(playlist,setupAudioControls)
-    // }
-       
     
         
     
 
-// Define the event listeners for forward and backward buttons
 function setupAudioControls() {
     
 
     forward.addEventListener("click", function () {
-        console.log(0)
+       
         if (songindex <songlst.length-1) 
         
      
             songindex+=1
-            src=`songs/${playlist}/${songlst[songindex]}/${songlst[songindex]}`
-            console.log(src,songindex)
+            src=`songs/${playlist}/${songlst[songindex].replace(playlist,"").replace("/","")}/${songlst[songindex].replace(playlist,"").replace("/","")}`
+            console.log(songlst[songindex].replace(playlist,"").replace("/",""))
+       
             loadsong(src)
             changenewinfo(songlst[songindex])
      
@@ -71,8 +51,8 @@ function setupAudioControls() {
     backward.addEventListener("click", function () {
         if (songindex !== 0) {
             songindex-=1
-            src=`songs/${playlist}/${songlst[songindex]}/${songlst[songindex]}`
-            console.log(src,songindex)
+            src=`songs/${playlist}/${songlst[songindex].replace(playlist,"").replace("/","")}/${songlst[songindex].replace(playlist,"").replace("/","")}`
+
             loadsong(src)
             changenewinfo(songlst[songindex])
         }
@@ -82,34 +62,6 @@ function setupAudioControls() {
         
 
 
-// function loadplaylist(playName,setupAudioControls) {
-//     songindex = 0;
-
-//     getSongs(`songs/${playName}`)
-//         .then(songslst => {
-
-//             if (songslst.length > 0) {
-//                 songslst.shift();
-//                 console.log(playName,"load")
-//                 console.log(songslst, "get");
-//                 songlst = [...songslst];
-//                 songindex = 0;
-//             }
-
-//             // Setup audio controls only if they are not already set up
-//             if (!forward.onclick) {
-//                 setupAudioControls(songslst, playName);
-//             }
-
-//             // Load the first song
-//             song_name = songslst[songindex];
-//             newsongloader(playName, song_name);
-//         })
-//         .catch(error => {
-//             console.error('Error loading playlist:', error);
-//         });
-// }
-// }
 
 
 function showplayico(){
@@ -118,12 +70,7 @@ function showplayico(){
     }
 
     
-    
 
- 
-
-    // console.log("Open Button:", openButton);
-    // console.log("Navbar:", nav);
 
     const resetAnimation = () => {
         nav.style.animation = ""; // Reset animation
@@ -216,6 +163,7 @@ function showplayico(){
     }
  function changenewinfo(song_name){
     song_name=song_name.replace("/","")
+    song_name=song_name.replace(playlist,"")
     song_name=song_name.split('%20').join(' ');
     changeInfo.song_name=song_name
     // i will make json file for artis name
@@ -263,13 +211,27 @@ function showplayico(){
         
     }
 
+
+async function loadplaylist(){
+    
+    await songslstload()
+   
+        let song_name=`songs/${playlist}/${songlst[songindex].replace(playlist,"").replace("/","")}/${songlst[songindex].replace(playlist,"").replace("/","")}`
+        
+
+     loadsong(song_name)
+     changenewinfo(songlst[songindex])
+} 
+
 function loadsong(src){
     console.log(src)
     
     initializeAudio(src+".mp3")
     imageloader(src+".jpg")
 }
-loadsong(src)
+
+loadplaylist()
+// loadsong(src)
 setupAudioControls()
 
 
@@ -291,94 +253,142 @@ updateInfo()
 
 
 
-    // Your existing code...
 
-    function playlistupdate(navCont) {
-        fetch('info/playlist.json')
-            .then(response => response.json())
-            .then(data => {
-                for (const i in data) {
-                    let htmlContent = `<a class="song-cont">
-                    <p class="playName">${data[i]["name"]}</</p>
-                    <p id="songNumber">${data[i]["number"]}</p>
-                  </a>`
-                    navCont.insertAdjacentHTML('beforeend', htmlContent);
-                }
+    
 
-                // Add click event listener to each link after updating the playlist
-           
-                
-                
-              
-
-            })
-            .catch(error => console.error('Error reading JSON file:', error));
+function playlisthandle(playlistLst){
+    for (const i of playlistLst) {
+        let htmlContent = `<a class="song-cont">
+        <p class="playName">${i}</</p>
+        <p id="songNumber">12</p>
+      
+      </a>`
+        nav.insertAdjacentHTML('beforeend', htmlContent);
     }
-
-    playlistupdate(nav);
-    console.log(songlst,999)
-
-
-
-    async function getSongs(folder) {
-        try {
-            const response = await fetch(`/${folder}/`);
-            const htmlContent = await response.text();
-    
-            // Parse the HTML content
-            const div = document.createElement("div");
-            div.innerHTML = htmlContent;
-            const anchorElements = div.getElementsByTagName("a");
-    
-            // Initialize an array to store folder names
-            const folders = [];
-    
-            // Loop through the anchor elements
-            for (let i = 0; i < anchorElements.length; i++) {
-                const element = anchorElements[i];
-               
-                // Extract the folder name and push it to the folders array
-                let filename = element.href.split(`/${folder}/`)[1];
-               
-                
-          
-                folders.push(filename);
-            }
-    
-            return folders; // Return the list of folders
-        } catch (error) {
-            throw new Error(`Error fetching songs from folder '${folder}': ${error.message}`);
         }
-    }
-    
+     
+
+let playlistlst = await getfolderlist("songs")
+playlisthandle(playlistlst)
+console.log(playlistlst,";;")
+
+
+
+let playslistconts = document.querySelectorAll(".song-cont")
+
+playslistconts.forEach(function(ele) {
+    ele.addEventListener('click', async function(event) {
    
+        playlist=event.target.querySelector(".playName").textContent.replace(`
+        `, "")
+        songindex=0
   
-   
-    // console.log(document.querySelectorAll(".song-cont"))
+        await songslstload()
+        console.log(songlst,"ll")
+        let song_name=`songs/${playlist}/${songlst[songindex].replace(playlist,"").replace("/","")}/${songlst[songindex].replace(playlist,"").replace("/","")}`
+        
 
-    // // Select all anchor elements with class "myLink"
-    // let links = document.querySelectorAll(".song-cont");
-    // console.log(links);
-
-
-    // // Add click event listener to each link
-    // for (let i = 0; i < links.length; i++) {
-    //     console.log('Inside loop:', i); // Log index inside the loop
-    //     links[i].addEventListener('click', function() {
-    //         console.log('Element clicked:', i);
-    //         console.log("ghhhg");
-    //         // Add your code here to execute when the element is clicked
-    //     });
-    // }
-    // console.log("ghg");
-    // console.log(links.length)
-
-
-
-
-
-
-
-
+     loadsong(song_name)
+     changenewinfo(songlst[songindex].replace(playlist,""))
+        
+    });
 });
+
+
+async function songslstload(){
+    songlst=await getfoldersongslist(`songs/${playlist}`,playlist)
+
+
+
+
+    
+}
+
+})}
+
+
+
+
+
+
+
+
+
+
+
+
+
+async function getfoldersongslist(folder,playlist) {
+    console.log(playlist)
+ 
+    
+    
+       
+    const response = await fetch(`/${folder}/`);
+    const htmlContent = await response.text();
+    let div = document.createElement("div")
+    div.innerHTML= htmlContent
+    let alst=[]
+
+    for (const i of div.getElementsByTagName("td")) {
+        let a=i.querySelector(("a"))
+        if (a){
+            alst.push(a["href"].replace("http://127.0.0.1:5500/songs/","").replace("/","").replace(`Arijit`,""))
+           
+
+        }
+       
+        
+    }
+    alst.shift()
+    
+    return alst
+
+        
+    };
+
+
+
+
+
+
+
+
+async function getfolderlist(folder) {
+ 
+    
+    
+       
+    const response = await fetch(`/${folder}/`);
+    const htmlContent = await response.text();
+    let div = document.createElement("div")
+    div.innerHTML= htmlContent
+    let alst=[]
+
+    for (const i of div.getElementsByTagName("td")) {
+        let a=i.querySelector(("a"))
+        if (a){
+            alst.push(a["href"].replace("http://127.0.0.1:5500/songs/","").replace("/",""))
+           
+
+        }
+       
+        
+    }
+    alst.shift()
+    
+    return alst
+
+        
+    };
+
+
+
+
+main()
+
+
+
+
+
 
