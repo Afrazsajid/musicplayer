@@ -60,3 +60,7 @@ GroovyTunes isn't just about playing tunes – it's a testament to my journey fr
 So, why should you hire me? Because behind every function, behind every line of code, lies a story of growth, resilience, and an unwavering passion for web development. With GroovyTunes as just the beginning, imagine the possibilities when you bring me onto your team – together, we'll create something truly spectacular.
 
 Ready to embark on this journey with me? Let's make magic happen! 🚀
+
+### Update:
+
+Added new features for changing songs and managing music, but ran into a snag. Works fine on my server, but not online. Turns out, the app relies on folder structures for data, which doesn't fly online without a JSON file. Currently working on a fix to make it play nice everywhere!
